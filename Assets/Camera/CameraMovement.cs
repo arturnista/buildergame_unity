@@ -49,7 +49,6 @@ public class CameraMovement : MonoBehaviour {
 
 			float h = Mathf.Sign(difPos.x) * (Mathf.Abs(difPos.x) / (Screen.width / 2));
 			float v = Mathf.Sign(difPos.y) * (Mathf.Abs(difPos.y) / (Screen.height / 2));
-			print("H:" + h + " V:" + v);
 
 			Vector3 cameraPos = transform.position;
 			cameraPos.x += h * moveSpeed * GameTimeController.deltaTime;

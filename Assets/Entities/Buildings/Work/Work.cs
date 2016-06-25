@@ -4,7 +4,14 @@ using System.Collections.Generic;
 
 public class Work : MonoBehaviour {
 
+	public enum WorkType{
+		Blacksmith,
+		Farm,
+		Mine
+	}
+
 	public int maxJobs = 3;
+	public WorkType type;
 	[Tooltip("Harsh Level set the multiplier to the hungerPerSecond of the worker")]
 	[Range(0.2f, 3f)]
 	public float harshLevel = 1f;

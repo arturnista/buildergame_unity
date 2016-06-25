@@ -116,8 +116,10 @@ public class Citizen : MonoBehaviour {
 			target = Target.Warehouse;
 			return;
 		}
-		movement.SetTarget(job.transform);
-		target = Target.Work;
+		if(!isJobless){
+			movement.SetTarget(job.transform);
+			target = Target.Work;
+		}
 	}
 
 	public void RetrieveResource(){

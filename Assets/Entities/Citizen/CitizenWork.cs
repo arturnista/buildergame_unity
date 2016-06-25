@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CitizenWork : MonoBehaviour {
 
+	public Work.WorkType workType;
+
 	[HideInInspector]
 	public Work job;
 
@@ -24,8 +26,10 @@ public class CitizenWork : MonoBehaviour {
 			Work[] works = GameObject.FindObjectsOfType<Work>();
 			foreach(Work w in works){
 				try{
-					job = w.BecameWorker(citizen);
-					break;
+					if(w.type == workType){
+						job = w.BecameWorker(citizen);
+						break;
+					}
 				}catch(NotEnoughRoomException){
 					continue;
 				}
