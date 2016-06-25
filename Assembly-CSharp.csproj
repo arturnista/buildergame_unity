@@ -63,6 +63,7 @@
      <Compile Include="Assets\Environment\DayCycleEvent.cs" />
      <Compile Include="Assets\Scripts\Exceptions\NotEnoughRoomException.cs" />
      <Compile Include="Assets\Scripts\Exceptions\WarehouseFull.cs" />
+     <Compile Include="Assets\TextDisplay\TextDisplay.cs" />
      <Compile Include="Assets\UI\UIController.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
