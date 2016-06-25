@@ -11,12 +11,12 @@ public class DayCycleEvent : MonoBehaviour {
 	void Awake () {
 		entities = GameObject.Find("Entities");
 		sun = GameObject.Find("Sun");
+		Debug.LogWarning("DayCycleEvent not finished!");
 	}
 
 	void Update () {
-		float rot = Time.deltaTime / 360f * timeScale;
+		float rot = GameTimeController.deltaTime / 360f * timeScale;
 		sun.transform.RotateAround(sun.transform.position, Vector3.forward, rot);
-		Debug.LogWarning("DayCycleEvent not finished!");
-		//entities.BroadcastMessage("OnDayChange", SendMessageOptions.DontRequireReceiver);
+		EventManager.scene.FireEvent(EventStr.DAY_CHANGE_EVENT);
 	}
 }

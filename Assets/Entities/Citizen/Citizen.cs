@@ -15,8 +15,15 @@ public class Citizen : MonoBehaviour {
 	private float hunger;
 	private float hungerPerSecond = 3;
 
+	private enum Target{
+		Home,
+		Warehouse,
+		Work
+	}
+	private Target target;
 	private bool isHungry;
 	private bool isRetrievingResource;
+
 
 	public House house{
 		get{
@@ -87,7 +94,7 @@ public class Citizen : MonoBehaviour {
 	void Update(){
 		float curHPS = hungerPerSecond * (isWorking ? job.harshLevel : 1f);
 
-		hunger -= curHPS * Time.deltaTime;
+		hunger -= curHPS * GameTimeController.deltaTime;
 		if(hunger <= HUNGRY_AMOUNT){
 			isHungry = true;
 		}
@@ -101,13 +108,16 @@ public class Citizen : MonoBehaviour {
 			if(hunger >= HUNGRY_AMOUNT){
 				isHungry = false;
 			}
+			target = Target.Home;
 			return;
 		}
 		if(isRetrievingResource){
 			movement.SetTarget(inventory.citWarehouse.transform);
+			target = Target.Warehouse;
 			return;
 		}
 		movement.SetTarget(job.transform);
+		target = Target.Work;
 	}
 
 	public void RetrieveResource(){
@@ -115,19 +125,18 @@ public class Citizen : MonoBehaviour {
 	}
 
 	public void OnArriveTarget(){
-		if(isRetrievingResource){
+		if(target == Target.Work && isRetrievingResource){
 			try{
 				inventory.citWarehouse.RetrieveResource(inventory.resource);
 				isRetrievingResource = false;
 			} catch(WarehouseFull){
 				isRetrievingResource = true;
 			}
-		}else if(isHungry){
+		}else if(target == Target.Home && isHungry){
 			try{
 				hunger = MAX_HUNGER;
-				isRetrievingResource = false;
 			} catch(WarehouseFull){
-				isRetrievingResource = true;
+				isHungry = true;
 			}
 		}
 	}

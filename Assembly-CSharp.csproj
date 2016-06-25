@@ -45,6 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Camera\CameraMovement.cs" />
+     <Compile Include="Assets\Controllers\EventManager\EventListener.cs" />
+     <Compile Include="Assets\Controllers\EventManager\EventManager.cs" />
+     <Compile Include="Assets\Controllers\EventManager\EventStr.cs" />
+     <Compile Include="Assets\Controllers\GameController\GameController.cs" />
+     <Compile Include="Assets\Controllers\GameTimeController\GameTimeController.cs" />
      <Compile Include="Assets\Entities\Buildings\House\House.cs" />
      <Compile Include="Assets\Entities\Buildings\Warehouse\Warehouse.cs" />
      <Compile Include="Assets\Entities\Buildings\Work\Work.cs" />
@@ -55,9 +61,9 @@
      <Compile Include="Assets\Entities\Resource\Resource.cs" />
      <Compile Include="Assets\Entities\Road\Road.cs" />
      <Compile Include="Assets\Environment\DayCycleEvent.cs" />
-     <Compile Include="Assets\GameController\GameController.cs" />
      <Compile Include="Assets\Scripts\Exceptions\NotEnoughRoomException.cs" />
      <Compile Include="Assets\Scripts\Exceptions\WarehouseFull.cs" />
+     <Compile Include="Assets\UI\UIController.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />

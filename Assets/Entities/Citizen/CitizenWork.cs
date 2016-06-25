@@ -35,7 +35,7 @@ public class CitizenWork : MonoBehaviour {
 
 	void Update(){
 		if(isWorking){
-			workingTime += Time.deltaTime;
+			workingTime += GameTimeController.deltaTime;
 			if(workingTime >= job.resourceTimeToCollect){
 				inventory.resource = new Resource(job.resourceProvide);
 

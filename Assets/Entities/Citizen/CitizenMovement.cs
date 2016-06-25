@@ -8,6 +8,8 @@ public class CitizenMovement : MonoBehaviour {
 	private NavMeshAgent navMeshAgent;
 	private bool targetAlreadyArrived;
 
+	private float normalSpeed;
+
 	private Vector3 targetPosition{
 		get{
 			if(target)
@@ -22,12 +24,24 @@ public class CitizenMovement : MonoBehaviour {
 	}
 
 	void Awake(){
-		
+		navMeshAgent = GetComponent<NavMeshAgent>();
+		normalSpeed = navMeshAgent.speed;
+		EventManager em = GameObject.FindObjectOfType<EventManager>();
+		em.AddListener(EventStr.PAUSE_GAME_EVENT, OnChangeTime);
+		em.AddListener(EventStr.PLAY_GAME_EVENT, OnChangeTime);
+		em.AddListener(EventStr.FORWARD_GAME_EVENT, OnChangeTime);
 	}
 
 	void Start () {
-		navMeshAgent = GetComponent<NavMeshAgent>();
 		lastTargetPosition = Vector3.zero;
+	}
+
+	public void OnChangeTime(){
+		Vector3 normalVelocity = navMeshAgent.velocity / GameTimeController.lastTimeMultiplier;
+		navMeshAgent.velocity = normalVelocity * GameTimeController.timeMultiplier;
+		navMeshAgent.speed = normalSpeed * GameTimeController.timeMultiplier;
+
+		print(GameTimeController.timeMultiplier);
 	}
 
 	void Update () {
