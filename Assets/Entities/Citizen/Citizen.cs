@@ -125,7 +125,7 @@ public class Citizen : MonoBehaviour {
 	}
 
 	public void OnArriveTarget(){
-		if(target == Target.Work && isRetrievingResource){
+		if(target == Target.Warehouse && isRetrievingResource){
 			try{
 				inventory.citWarehouse.RetrieveResource(inventory.resource);
 				isRetrievingResource = false;
