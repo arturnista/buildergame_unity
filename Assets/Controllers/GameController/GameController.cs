@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+	public GameObject house;
+
 	private Resource woodResource;
 	private Resource ironResource;
 	private Resource foodResource;
@@ -17,8 +19,11 @@ public class GameController : MonoBehaviour {
 		foodResource = new Resource();
 		foodResource.type = Resource.Type.Food;
 	}
-	
-	// Update is called once per frame
+
+	public void BuildHouse(Vector3 position){
+		Instantiate(house, position, Quaternion.identity);
+	}
+
 	void Update () {
 	
 	}
